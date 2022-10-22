@@ -1,4 +1,4 @@
-# Milestone 1 - APP_NAME_HERE
+# Milestone 1 - Yelpy
 
 ## Table of Contents
 
@@ -7,20 +7,20 @@
 1. [Wireframes](#Wireframes)
 
 ## Overview
+Yelp clone, allowing users to explore and learn about new restaurants
 
 ### Description
-
-[Description of your app]
+Just like Yelp our app will allow users to find entertainment around them
 
 ### App Evaluation
 
 [Evaluation of your app across the following attributes]
-- **Category:**
-- **Mobile:**
-- **Story:**
-- **Market:**
-- **Habit:**
-- **Scope:**
+- **Category:** Entertainment / Social
+- **Mobile:** Easy on the go way to find new places
+- **Story:** Users can create their own profile, publish their reviews to restaurants. They can also check out other people's review to explore restaurants.
+- **Market:** business owners and anyone who wants to find a place to eat/have fun.
+- **Habit:** Users find a place nearby when they are hungry/bored
+- **Scope:** Post a listing, search, review
 
 ## Product Spec
 
@@ -28,22 +28,28 @@
 
 **Required Features**
 
-* [fill in your required user features here]
-* ...
+* Register, login, logout
+* Seach nearby restaurants
+* View restaurant detail
+* Filter restaurants by city name, rating, etc.
 
 **Stretch Features**
 
-* [fill in your optional user features here]
-* ...
+* Extending yelpy to a social media by
+    * Allowing users to send direct messages to each other
+    * Allowing users to publish their posts
 
 ### 2. Screen Archetypes
 
-- [list first screen here]
-  - [list associated required story here]
-  - ...
-- [list second screen here]
-  - [list associated required story here]
-  - ...
+- Login
+  - User can login
+- Registration
+  - User can create a new account
+- Search
+  - User can search for restaurants
+  - User can see search results
+- Restaurant page
+  - User can see restaurant information
 
 ### 3. Navigation
 
@@ -70,3 +76,4 @@
 ### [BONUS] Digital Wireframes & Mockups
 
 ### [BONUS] Interactive Prototype
+
