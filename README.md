@@ -41,32 +41,41 @@ Just like Yelp our app will allow users to find entertainment around them
 
 ### 2. Screen Archetypes
 
-- Login
+- Login screen
   - User can login
-- Registration
+- Registration screen
   - User can create a new account
-- Search
+- Stream screen
+    - User can view a feed of restaurants
+- Creation screen
+    - User can post a new comment or rating
+- Search screen
   - User can search for restaurants
   - User can see search results
-- Restaurant page
+- Restaurant detail screen
   - User can see restaurant information
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
-* [fill out your first tab]
-* [fill out your second tab]
-* [fill out your third tab]
+* Home Feed
+* Search
+* Liked restaurants
+* Profile
 
 **Flow Navigation** (Screen to Screen)
 
-- [list first screen here]
-  - [list screen navigation here]
-  - ...
-- [list second screen here]
-  - [list screen navigation here]
-  - ...
+- Login Screen
+    - => Home
+- Registration Screen
+    - => Home
+- Stream Screen
+    - => Restaurant detail screen
+- Creation creen
+    - => Home (after you finish posting the new review/rating)
+- Search screen
+    - None
 
 ## Wireframes
 

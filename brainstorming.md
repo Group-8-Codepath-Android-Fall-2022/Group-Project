@@ -1,6 +1,8 @@
 Mobile App Dev - App Brainstorming
 ===
 
+# Brainstorming ideas
+
 ## Favorite Existing Apps - List
 1. Instagram
 2. Spotify
@@ -24,16 +26,18 @@ Mobile App Dev - App Brainstorming
 2. Pet Diary
 3. Airbnb
 
+# 3 evaluated ideas
+
 ## New App Ideas - Evaluate and Categorize
 1. Yelp Clone
 
 - **Description**: Allows users to publish, rate, and review restaurants. Business owners can create a page for their business, add general info and pictures. Customers can leave reviews w/o picictures
 - **Category**: Entertainment / Social
-- **Mobile**: Easy on the go way to find new places
+- **Mobile**: Easy on the go way to find new places for users. We can take advantage of `map` and `sensors`.
 - **Story**: Users can create their own profile, publish their reviews to restaurants. They can also check out other people's review to explore restaurants.
 - - **Market:**: business owners and anyone who wants to find a place to eat/have fun.
 - **Habit:** Users find a place nearby when they are hungry/bored 
-- **Scope:** Post a listing, search, review
+- **Scope:** Search and review restaurants.
 
 
 **API endpoint** that might be helpful:
@@ -60,10 +64,7 @@ https://www.yelp.com/developers/documentation/v3/business_search
 - **Habit:** Travelers find a lodging place before/during their ventures. Hosts manage their listings. 
 - **Scope:** Post a listing, search, review
 
-4. Movie Master
-- **Description**: An Android app allows users to find movies to watch by reviewing their ratings, description, etc.
-- **Category**: Entertainment
-- **Mobile**: Mobile is essential for the instant searching for the next movie to watch. Also, it's easy for users to leave their own ratings and reviews for movies they have watched.
-- **Story**: Users can create their own profile, search for movies based on genre, ratings, etc. Also, they can give movies ratings and reviews.
-- **Market**: People who love watching movies
+
+# Final idea
+- Yelp Clone - Yelpy
 
