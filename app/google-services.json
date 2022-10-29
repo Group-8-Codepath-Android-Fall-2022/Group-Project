@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "605962120975",
+    "project_id": "yelpy-a70ef",
+    "storage_bucket": "yelpy-a70ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605962120975:android:6d950ce92dc423c9f7187a",
+        "android_client_info": {
+          "package_name": "com.group8.yelpy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "605962120975-2s9n7oargi23dke5u1eb03jsoinit68i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAO4Oo2Aq35BuXBrZfDknyYrYLxzNlLVho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "605962120975-2s9n7oargi23dke5u1eb03jsoinit68i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "605962120975-dqai4spg2u719jh2n8efapb67nbj7kfl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.group8.yelpy"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
