@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Patterns
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
@@ -50,7 +51,15 @@ class AuthActivity : AppCompatActivity() {
                 imm?.hideSoftInputFromWindow(view.windowToken, 0)
             }
             // log in or sign up
-            authenticate()
+            if(!Patterns.EMAIL_ADDRESS.matcher(emailEditText.text).matches()){
+                emailEditText.requestFocus()
+                Toast.makeText(this, "Enter a valid email address", Toast.LENGTH_SHORT).show()
+            } else if (passwordEditText.text.length < 6) {
+                passwordEditText.requestFocus()
+                Toast.makeText(this, "Password must be at least 6 characters", Toast.LENGTH_SHORT).show()
+            } else {
+                authenticate()
+            }
         }
     }
 
