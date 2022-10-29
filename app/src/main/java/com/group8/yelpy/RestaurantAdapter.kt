@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.MultiTransformation
@@ -15,7 +16,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 
 
-class RestaurantAdapter(private val context: Context, private val restaurants: List<Restaurant>) :
+class RestaurantAdapter(private val context: Context, private val restaurants: List<Restaurant>, private val mListener: OnListFragmentInteractionListener?) :
     RecyclerView.Adapter<RestaurantAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,52 +25,41 @@ class RestaurantAdapter(private val context: Context, private val restaurants: L
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val restaurant = restaurants[position]
-        holder.bind(restaurant)
-    }
-
     override fun getItemCount() = restaurants.size
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        View.OnClickListener {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var mRestaurant: Restaurant? = null
+        val mRestaurantImage: ImageView = itemView.findViewById(R.id.image)
+        val mRestaurantName: TextView = itemView.findViewById(R.id.name)
+        val mRestaurantRating: RatingBar = itemView.findViewById(R.id.rating)
+        val mRestaurantReviewCount: TextView = itemView.findViewById(R.id.reviewCount)
+        val mRestaurantDistance: TextView = itemView.findViewById(R.id.distance)
+        val mRestaurantPrice: TextView = itemView.findViewById(R.id.price)
+        val mRestaurantAddress: TextView = itemView.findViewById(R.id.address)
+        val mRestaurantCategory: TextView = itemView.findViewById(R.id.category)
+    }
 
-        private val mRestaurantImage: ImageView = itemView.findViewById(R.id.image)
-        private val mRestaurantName: TextView = itemView.findViewById(R.id.name)
-        private val mRestaurantRating: RatingBar = itemView.findViewById(R.id.rating)
-        private val mRestaurantReviewCount: TextView = itemView.findViewById(R.id.reviewCount)
-        private val mRestaurantDistance: TextView = itemView.findViewById(R.id.distance)
-        private val mRestaurantPrice: TextView = itemView.findViewById(R.id.price)
-        private val mRestaurantAddress: TextView = itemView.findViewById(R.id.address)
-        private val mRestaurantCategory: TextView = itemView.findViewById(R.id.category)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val restaurant = restaurants[position]
 
-        init {
-            itemView.setOnClickListener(this)
-        }
+        holder.mRestaurant = restaurant
+        holder.mRestaurantName.text = restaurant.name
+        holder.mRestaurantRating.rating = restaurant.rating.toFloat()
+        holder.mRestaurantReviewCount.text = "${restaurant.numReviews} Reviews"
+        holder.mRestaurantDistance.text = restaurant.displayDistance()
+        holder.mRestaurantPrice.text = restaurant.price
+        holder.mRestaurantAddress.text = restaurant.location.address
+        holder.mRestaurantCategory.text = restaurant.categories[0].title
 
-        fun bind(restaurant: Restaurant) {
-            mRestaurantName.text = restaurant.name
-            mRestaurantRating.rating = restaurant.rating.toFloat()
-            mRestaurantReviewCount.text = "${restaurant.numReviews} Reviews"
-            mRestaurantDistance.text = restaurant.displayDistance()
-            mRestaurantPrice.text = restaurant.price
-            mRestaurantAddress.text = restaurant.location.address
-            mRestaurantCategory.text = restaurant.categories[0].title
+        Glide.with(context)
+            .load(restaurant.imageUrl)
+            .apply(RequestOptions().transform(MultiTransformation(CenterCrop(), RoundedCorners(20))))
+            .into(holder.mRestaurantImage)
 
-            Glide.with(context)
-                .load(restaurant.imageUrl)
-                .apply(RequestOptions().transform(MultiTransformation(CenterCrop(), RoundedCorners(20))))
-                .into(mRestaurantImage)
-        }
-
-        override fun onClick(v: View?) {
-            // Get selected article
-//            val restaurant = restaurants[]
-
-//             Navigate to Details screen and pass selected article
-//            val intent = Intent(context, DetailActivity::class.java)
-//            intent.putExtra(ARTICLE_EXTRA, article)
-//            context.startActivity(intent)
+        holder.itemView.setOnClickListener {
+            holder.mRestaurant?.let { restaurant ->
+                mListener?.onItemClick(restaurant)
+            }
         }
     }
 }

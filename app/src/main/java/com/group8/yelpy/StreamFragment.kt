@@ -2,6 +2,7 @@ package com.group8.yelpy
 
 import android.Manifest
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
@@ -11,6 +12,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -29,7 +31,7 @@ private const val BASE_URL =
     "https://api.yelp.com/v3/"
 
 
-class StreamFragment : Fragment(), LocationListener {
+class StreamFragment : Fragment(), LocationListener, OnListFragmentInteractionListener {
     private val restaurants = mutableListOf<Restaurant>()
     private lateinit var restaurantsRecyclerView: RecyclerView
     private lateinit var restaurantAdapter: RestaurantAdapter
@@ -46,7 +48,7 @@ class StreamFragment : Fragment(), LocationListener {
         restaurantsRecyclerView = view.findViewById(R.id.restaurant_recycler_view)
         restaurantsRecyclerView.layoutManager = layoutManager
         restaurantsRecyclerView.setHasFixedSize(true)
-        restaurantAdapter = RestaurantAdapter(view.context, restaurants)
+        restaurantAdapter = RestaurantAdapter(view.context, restaurants, this@StreamFragment)
         restaurantsRecyclerView.adapter = restaurantAdapter
         fetchRestaurants()
         return view
@@ -91,6 +93,10 @@ class StreamFragment : Fragment(), LocationListener {
     override fun onLocationChanged(location: Location) {
         latitude = location.latitude
         longitude = location.longitude
+    }
+
+    override fun onItemClick(item: Restaurant) {
+        Toast.makeText(context, "Bring to detail view", Toast.LENGTH_SHORT).show()
     }
 
 }
