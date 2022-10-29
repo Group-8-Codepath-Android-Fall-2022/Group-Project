@@ -1,10 +1,18 @@
 package com.group8.yelpy
 
+import android.Manifest
+import android.content.Context
+import android.content.pm.PackageManager
+import android.location.Location
+import android.location.LocationListener
+import android.location.LocationManager
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,14 +29,13 @@ private const val BASE_URL =
     "https://api.yelp.com/v3/"
 
 
-class StreamFragment : Fragment() {
+class StreamFragment : Fragment(), LocationListener {
     private val restaurants = mutableListOf<Restaurant>()
     private lateinit var restaurantsRecyclerView: RecyclerView
     private lateinit var restaurantAdapter: RestaurantAdapter
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private val locationPermissionCode = 2
+    private var latitude: Double = 0.0
+    private var longitude: Double = 0.0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,18 +48,8 @@ class StreamFragment : Fragment() {
         restaurantsRecyclerView.setHasFixedSize(true)
         restaurantAdapter = RestaurantAdapter(view.context, restaurants)
         restaurantsRecyclerView.adapter = restaurantAdapter
-        return view
-    }
-
-    companion object {
-        fun newInstance(): StreamFragment {
-            return StreamFragment()
-        }
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         fetchRestaurants()
+        return view
     }
 
     private fun fetchRestaurants() {
@@ -62,7 +59,9 @@ class StreamFragment : Fragment() {
             .build()
         val yelpService = retrofit.create(YelpService::class.java)
 
-        yelpService.getRestaurantsByLocation("Bearer $API_KEY", "Seattle").enqueue(object : Callback<YelpSearchResult> {
+        getLocation()
+
+        yelpService.getRestaurantsByLatitudeAndLongitude("Bearer $API_KEY", latitude, longitude).enqueue(object : Callback<YelpSearchResult> {
             override fun onResponse(call: Call<YelpSearchResult>, response: Response<YelpSearchResult>) {
                 Log.i(TAG, "onResponse $response")
                 val body = response.body()
@@ -70,6 +69,7 @@ class StreamFragment : Fragment() {
                     Log.w(TAG, "Response body is null")
                     return
                 }
+                Log.i(TAG, response.body()!!.restaurants.size.toString())
                 restaurants.addAll(body.restaurants)
                 restaurantAdapter.notifyDataSetChanged()
             }
@@ -79,4 +79,18 @@ class StreamFragment : Fragment() {
             }
         })
     }
+
+    private fun getLocation() {
+        var locationManager: LocationManager = context?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        if ((ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)) {
+            ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), locationPermissionCode)
+        }
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5f, this)
+    }
+
+    override fun onLocationChanged(location: Location) {
+        latitude = location.latitude
+        longitude = location.longitude
+    }
+
 }
