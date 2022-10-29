@@ -80,7 +80,7 @@ Just like Yelp our app will allow users to find entertainment around them
 ## Wireframes
 
 [Add picture of your hand sketched wireframes in this section]
-<img src="wireframe.jpg" width=600>
+<img src="wireframe.gif" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 
