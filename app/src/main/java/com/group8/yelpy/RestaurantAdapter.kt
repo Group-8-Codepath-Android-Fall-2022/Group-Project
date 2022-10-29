@@ -9,6 +9,10 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.MultiTransformation
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 
 
 class RestaurantAdapter(private val context: Context, private val restaurants: List<Restaurant>) :
@@ -53,9 +57,8 @@ class RestaurantAdapter(private val context: Context, private val restaurants: L
             mRestaurantCategory.text = restaurant.categories[0].title
 
             Glide.with(context)
-//                .asBitmap()
-                .load(restaurant.imageUrl.replace("http", "https"))
-                .placeholder(R.drawable.welcome_page)
+                .load(restaurant.imageUrl)
+                .apply(RequestOptions().transform(MultiTransformation(CenterCrop(), RoundedCorners(20))))
                 .into(mRestaurantImage)
         }
 

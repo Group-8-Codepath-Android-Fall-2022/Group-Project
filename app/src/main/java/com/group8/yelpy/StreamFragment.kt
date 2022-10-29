@@ -62,7 +62,7 @@ class StreamFragment : Fragment() {
             .build()
         val yelpService = retrofit.create(YelpService::class.java)
 
-        yelpService.getRestaurantsByLocation("Bearer $API_KEY", "New York").enqueue(object : Callback<YelpSearchResult> {
+        yelpService.getRestaurantsByLocation("Bearer $API_KEY", "Seattle").enqueue(object : Callback<YelpSearchResult> {
             override fun onResponse(call: Call<YelpSearchResult>, response: Response<YelpSearchResult>) {
                 Log.i(TAG, "onResponse $response")
                 val body = response.body()
@@ -70,7 +70,6 @@ class StreamFragment : Fragment() {
                     Log.w(TAG, "Response body is null")
                     return
                 }
-                Log.i(TAG, response.body()!!.restaurants.size.toString())
                 restaurants.addAll(body.restaurants)
                 restaurantAdapter.notifyDataSetChanged()
             }
