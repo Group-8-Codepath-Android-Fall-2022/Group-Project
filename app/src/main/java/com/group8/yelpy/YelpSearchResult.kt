@@ -18,9 +18,10 @@ data class Restaurant (
     val categories: List<Category>,
     val location: Location,
     val phone: String,
+    val url: String,
     val id: String,
     val is_open_now: Boolean
-    ) : java.io.Serializable {
+    ) {
     fun displayDistance(): String {
         val distanceInMiles = "%.2f".format(distanceInMeters * 0.000621371)
         return "$distanceInMiles mi"

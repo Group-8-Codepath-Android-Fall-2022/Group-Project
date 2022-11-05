@@ -24,7 +24,7 @@ interface YelpService {
         @Query("longitude") longitude: Double,
     ) : Call<YelpSearchResult>
 
-    @GET("businesses")
+    @GET("businesses/")
     fun getRestaurantById(
         @Header("Authorization") authHeader: String,
         @Query("id") id: String
