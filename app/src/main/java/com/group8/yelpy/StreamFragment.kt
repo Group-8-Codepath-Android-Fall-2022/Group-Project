@@ -24,7 +24,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
+const val RESTAURANT_EXTRA = "RESTAURANT_EXTRA"
 private const val TAG = "StreamFragment"
 private const val API_KEY = BuildConfig.API_KEY
 private const val BASE_URL =
@@ -97,6 +97,9 @@ class StreamFragment : Fragment(), LocationListener, OnListFragmentInteractionLi
 
     override fun onItemClick(item: Restaurant) {
         Toast.makeText(context, "Bring to detail view", Toast.LENGTH_SHORT).show()
+        val intent = Intent(getActivity(), DetailActivity::class.java)
+        intent.putExtra("RESTAURANT_EXTRA", item.id)
+        startActivity(intent)
     }
 
 }

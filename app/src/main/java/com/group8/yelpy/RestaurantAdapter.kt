@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.MultiTransformation
@@ -33,7 +32,7 @@ class RestaurantAdapter(private val context: Context, private val restaurants: L
         val mRestaurantName: TextView = itemView.findViewById(R.id.name)
         val mRestaurantRating: RatingBar = itemView.findViewById(R.id.rating)
         val mRestaurantReviewCount: TextView = itemView.findViewById(R.id.reviewCount)
-        val mRestaurantDistance: TextView = itemView.findViewById(R.id.distance)
+        val mRestaurantDistance: TextView = itemView.findViewById(R.id.isOpen)
         val mRestaurantPrice: TextView = itemView.findViewById(R.id.price)
         val mRestaurantAddress: TextView = itemView.findViewById(R.id.address)
         val mRestaurantCategory: TextView = itemView.findViewById(R.id.category)
