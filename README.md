@@ -28,16 +28,16 @@ Just like Yelp our app will allow users to find entertainment around them
 
 **Required Features**
 
-* Register, login, logout
-* Seach nearby restaurants
-* View restaurant detail
-* Filter restaurants by city name, rating, etc.
+- [x] Register, login, logout
+- [x] Seach nearby restaurants (ask user's location permission, and show restaurants in that area)
+- [x] View restaurant detail
+- [ ] Filter restaurants by city name, rating, etc.
 
 **Stretch Features**
 
 * Extending yelpy to a social media by
-    * Allowing users to send direct messages to each other
-    * Allowing users to publish their posts
+    - [ ] Allowing users to send direct messages to each other
+    - [ ] Allowing users to publish their posts
 
 ### 2. Screen Archetypes
 
