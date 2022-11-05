@@ -3,8 +3,8 @@ package com.group8.yelpy
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Path
 import retrofit2.http.Query
-import java.text.DecimalFormat
 
 interface YelpService {
 
@@ -23,5 +23,11 @@ interface YelpService {
         @Query("latitude") latitude: Double,
         @Query("longitude") longitude: Double,
     ) : Call<YelpSearchResult>
+
+    @GET("businesses/{id}")
+    fun getRestaurantsById(
+        @Header("Authorization") authHeader: String,
+        @Path("id") restaurantId: String,
+    ) : Call<SingleSearchResult>
 
 }

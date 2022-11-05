@@ -2,7 +2,6 @@ package com.group8.yelpy
 
 import android.Manifest
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
@@ -71,7 +70,6 @@ class StreamFragment : Fragment(), LocationListener, OnListFragmentInteractionLi
                     Log.w(TAG, "Response body is null")
                     return
                 }
-                Log.i(TAG, response.body()!!.restaurants.size.toString())
                 restaurants.addAll(body.restaurants)
                 restaurantAdapter.notifyDataSetChanged()
             }
@@ -96,7 +94,15 @@ class StreamFragment : Fragment(), LocationListener, OnListFragmentInteractionLi
     }
 
     override fun onItemClick(item: Restaurant) {
-        Toast.makeText(context, "Bring to detail view", Toast.LENGTH_SHORT).show()
+        val bundle = Bundle()
+        bundle.putString("id", item.id)
+        val detailFragment= DetailFragment()
+        detailFragment.arguments = bundle
+
+        val fragmentManager = activity?.supportFragmentManager
+        val fragmentTransaction = fragmentManager?.beginTransaction()
+        fragmentTransaction?.replace(R.id.yelpy_frame_layout, detailFragment)
+        fragmentTransaction?.commit()
     }
 
 }

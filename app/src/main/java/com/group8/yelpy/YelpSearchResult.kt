@@ -8,6 +8,7 @@ data class YelpSearchResult(
 )
 
 data class Restaurant(
+    val id: String,
     val name: String,
     val rating: Double,
     @SerializedName("review_count") val numReviews: Int,
