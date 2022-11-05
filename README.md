@@ -82,7 +82,11 @@ Just like Yelp our app will allow users to find entertainment around them
 [Add picture of your hand sketched wireframes in this section]
 <img src="wireframe.gif" width=600>
 
-### [BONUS] Digital Wireframes & Mockups
+## Video Walkthrough
 
-### [BONUS] Interactive Prototype
+Here's a walkthrough of implemented user stories:
+
+<img src='yelpy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with [LICEcap](https://www.cockos.com/licecap/)
 
