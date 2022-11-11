@@ -45,4 +45,5 @@ class NavigationActivity : AppCompatActivity() {
         fragmentTransaction.replace(R.id.yelpy_frame_layout, fragment)
         fragmentTransaction.commit()
     }
+
 }

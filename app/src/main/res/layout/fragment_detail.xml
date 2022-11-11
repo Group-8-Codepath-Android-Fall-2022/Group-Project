@@ -13,7 +13,7 @@
         android:layout_margin="6dp">
 
         <ImageView
-            android:id="@+id/res_image"
+            android:id="@+id/pfp"
             android:layout_width="200dp"
             android:layout_height="150dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -22,7 +22,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/res_name"
+            android:id="@+id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -31,7 +31,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/res_image" />
+            app:layout_constraintTop_toBottomOf="@+id/pfp" />
 
         <RatingBar
             android:id="@+id/res_rating"
@@ -54,7 +54,7 @@
             android:text="address"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/res_name" />
+            app:layout_constraintTop_toBottomOf="@+id/email" />
 
         <TextView
             android:id="@+id/res_price"
