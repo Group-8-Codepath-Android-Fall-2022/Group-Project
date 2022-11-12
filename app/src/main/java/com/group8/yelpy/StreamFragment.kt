@@ -59,9 +59,9 @@ class StreamFragment : Fragment(), LocationListener, OnListFragmentInteractionLi
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 // on below line we are checking
-                // if query exist or not.
+//                 if query exist or not.
                 for (i in 0 until restaurants.size) {
-                    contain = restaurants[i].name.contains(query as CharSequence)
+                    contain = restaurants[i].name.contains("In n Out", true)
                     if (contain)
                         break
                 }
@@ -70,7 +70,7 @@ class StreamFragment : Fragment(), LocationListener, OnListFragmentInteractionLi
                     // are filtering our list adapter.
                     restaurants.clear()
                     getAllRestarants()
-                    removeNotMatched(query)
+                    removeNotMatched("In n out")
                     restaurantAdapter.notifyDataSetChanged()
                 } else {
                     // if query is not present we are displaying

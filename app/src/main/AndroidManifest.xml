@@ -22,7 +22,8 @@
 <!--            android:value=".NavigationActivity" />-->
         <activity
             android:name=".NavigationActivity"
-            android:exported="true">
+            android:exported="true"
+            android:parentActivityName=".MainActivity">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

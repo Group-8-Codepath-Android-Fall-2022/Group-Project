@@ -21,18 +21,21 @@ class NavigationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_navigation)
 
         val streamFragment: Fragment = StreamFragment()
+        val profileFragment: Fragment = ProfileFragment()
 
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
 
-        // handle navigation selection
-//        bottomNavigationView.setOnItemSelectedListener { item ->
-//            lateinit var fragment: Fragment
-//            when (item.itemId) {
-//                R.id.nav_stream -> fragment = streamFragment
-//            }
-//            replaceFragment(fragment)
-//            true
-//        }
+//         handle navigation selection
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            lateinit var fragment: Fragment
+            when (item.itemId) {
+                R.id.nav_stream -> fragment = streamFragment
+                R.id.nav_me -> fragment = profileFragment
+            }
+            replaceFragment(fragment)
+            true
+        }
+
         replaceFragment(streamFragment)
 
         // Set default selection
@@ -44,6 +47,14 @@ class NavigationActivity : AppCompatActivity() {
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.yelpy_frame_layout, fragment)
         fragmentTransaction.commit()
+    }
+
+    override fun onBackPressed() {
+        val fragment =
+            this.supportFragmentManager.findFragmentById(R.id.rlContainer)
+        (fragment as? IOnBackPressed)?.onBackPressed()?.not()?.let {
+            super.onBackPressed()
+        }
     }
 
 }

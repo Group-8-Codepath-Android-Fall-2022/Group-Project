@@ -109,4 +109,12 @@ class AuthActivity : AppCompatActivity() {
         val intent = Intent(this, NavigationActivity::class.java)
         startActivity(intent)
     }
+
+//    private fun logOut() {
+//        Toast.makeText(this, "Bye!", Toast.LENGTH_LONG).show()
+//
+//        // Move to next activity
+//        val intent = Intent(this, MainActivity::class.java)
+//        startActivity(intent)
+//    }
 }
