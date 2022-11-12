@@ -1,4 +1,4 @@
-# Milestone 1 - Yelpy
+# Milestone 3 - Yelpy
 
 ## Table of Contents
 
