@@ -62,4 +62,5 @@ class RestaurantAdapter(private val context: Context, private val restaurants: L
             }
         }
     }
+
 }

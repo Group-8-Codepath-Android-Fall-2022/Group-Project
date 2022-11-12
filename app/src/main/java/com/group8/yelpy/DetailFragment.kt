@@ -14,10 +14,8 @@ import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import com.google.firebase.BuildConfig
+import com.group8.yelpy.BuildConfig.API_KEY
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,7 +23,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 private const val TAG = "DetailFragment"
-private const val API_KEY = BuildConfig.API_KEY
+//private const val API_KEY = BuildConfig.API_KEY
 private const val BASE_URL =
     "https://api.yelp.com/v3/"
 
@@ -52,8 +50,8 @@ class DetailFragment : Fragment() {
     }
 
     private fun displayDetails(view: View) {
-        val image: ImageView = view.findViewById(R.id.res_image)
-        val name: TextView = view.findViewById(R.id.res_name)
+        val image: ImageView = view.findViewById(R.id.pfp)
+        val name: TextView = view.findViewById(R.id.email)
         val address: TextView = view.findViewById(R.id.res_address)
         val category: TextView = view.findViewById(R.id.res_category)
         val price: TextView = view.findViewById(R.id.res_price)
@@ -113,4 +111,12 @@ class DetailFragment : Fragment() {
             }
         })
     }
+//    override fun onBackPressed(): Boolean {
+//        return if (myCondition) {
+//            //action not popBackStack
+//            true
+//        } else {
+//            false
+//        }
+//    }
 }

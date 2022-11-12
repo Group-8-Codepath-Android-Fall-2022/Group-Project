@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -34,9 +35,11 @@ class StreamFragment : Fragment(), LocationListener, OnListFragmentInteractionLi
     private val restaurants = mutableListOf<Restaurant>()
     private lateinit var restaurantsRecyclerView: RecyclerView
     private lateinit var restaurantAdapter: RestaurantAdapter
+    lateinit var searchView: SearchView
     private val locationPermissionCode = 2
     private var latitude: Double = 0.0
     private var longitude: Double = 0.0
+    private var contain : Boolean = false;
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,18 +52,74 @@ class StreamFragment : Fragment(), LocationListener, OnListFragmentInteractionLi
         restaurantsRecyclerView.setHasFixedSize(true)
         restaurantAdapter = RestaurantAdapter(view.context, restaurants, this@StreamFragment)
         restaurantsRecyclerView.adapter = restaurantAdapter
+        searchView = view.findViewById(R.id.searchView)
         fetchRestaurants()
+
+        // listener for our search view.
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                // on below line we are checking
+//                 if query exist or not.
+                for (i in 0 until restaurants.size) {
+                    contain = restaurants[i].name.contains("In n Out", true)
+                    if (contain)
+                        break
+                }
+                if (contain) {
+                    // if query exist within list we
+                    // are filtering our list adapter.
+                    restaurants.clear()
+                    getAllRestarants()
+                    removeNotMatched("In n out")
+                    restaurantAdapter.notifyDataSetChanged()
+                } else {
+                    // if query is not present we are displaying
+                    // a toast message as no  data found..
+                    Toast.makeText(context, "No Restaurants found..", Toast.LENGTH_LONG)
+                        .show()
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                // if query text is change in that case we
+                // are filtering our adapter with
+                // new text on below line.
+                restaurants.clear()
+                getAllRestarants()
+                removeNotMatched(newText)
+                restaurantAdapter.notifyDataSetChanged()
+                return true
+            }
+        })
+
         return view
     }
 
     private fun fetchRestaurants() {
+
+        getLocation()
+
+        // Add all restaurants to the list
+        getAllRestarants()
+
+    }
+
+    private fun removeNotMatched(query: String?) {
+        var containsKey: Boolean = false
+        for (i in 0 until restaurants.size) {
+            containsKey = restaurants[i].name.contains(query as CharSequence)
+            if (!containsKey)
+                restaurants.removeAt(i)
+        }
+    }
+
+    private fun getAllRestarants() {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val yelpService = retrofit.create(YelpService::class.java)
-
-        getLocation()
 
         yelpService.getRestaurantsByLatitudeAndLongitude("Bearer $API_KEY", latitude, longitude).enqueue(object : Callback<YelpSearchResult> {
             override fun onResponse(call: Call<YelpSearchResult>, response: Response<YelpSearchResult>) {

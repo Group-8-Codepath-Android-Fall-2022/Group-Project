@@ -33,83 +33,62 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pfp" />
 
-        <RatingBar
-            android:id="@+id/res_rating"
-            style="@android:style/Widget.Material.RatingBar.Small"
-            android:layout_width="wrap_content"
-            android:layout_height="16dp"
-            android:layout_marginTop="10dp"
-            android:numStars="5"
-            android:progressTint="#CC0000"
-            android:rating="4.5"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/res_price" />
-
         <TextView
             android:id="@+id/res_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="address"
+            android:text="San Jose, CA"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/email" />
 
-        <TextView
-            android:id="@+id/res_price"
+        <Button
+            android:id="@+id/add_review"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="$$$"
-            android:textColor="@android:color/darker_gray"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/res_category" />
-
-        <TextView
-            android:id="@+id/res_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="category"
-            android:textColor="@android:color/darker_gray"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="28dp"
+            android:text="Add Review"
+            android:textSize="9sp"
+            app:layout_constraintEnd_toStartOf="@+id/add_photo"
+            app:layout_constraintHorizontal_bias="0.058"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/res_address" />
 
-        <TextView
-            android:id="@+id/status"
+        <Button
+            android:id="@+id/add_photo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="172dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="169dp"
-            android:text="Closed"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/res_rating" />
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="28dp"
+            android:text="Add Photo"
+            android:textSize="9sp"
+            app:layout_constraintEnd_toStartOf="@+id/check_in"
+            app:layout_constraintTop_toBottomOf="@+id/res_address" />
 
         <Button
-            android:id="@+id/info"
+            android:id="@+id/check_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:text="More info"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="32dp"
+            android:text="Check-In"
+            android:textSize="9sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phone" />
+            app:layout_constraintTop_toBottomOf="@+id/res_address" />
 
-        <TextView
-            android:id="@+id/phone"
+        <Button
+            android:id="@+id/logOutBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:text="Phone"
+            android:layout_marginTop="96dp"
+            android:text="Log Out"
+            android:textSize="9sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.524"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/status" />
+            app:layout_constraintTop_toBottomOf="@+id/add_photo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
