@@ -31,7 +31,7 @@ Just like Yelp our app will allow users to find entertainment around them
 - [x] Register, login, logout
 - [x] Seach nearby restaurants (ask user's location permission, and show restaurants in that area)
 - [x] View restaurant detail
-- [ ] Filter restaurants by city name, rating, etc.
+- [ ] Filter restaurants by name, rating, etc.
 
 **Stretch Features**
 
