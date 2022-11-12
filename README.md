@@ -86,7 +86,7 @@ Just like Yelp our app will allow users to find entertainment around them
 
 Here's a walkthrough of implemented user stories:
 
-<img src='yelpy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='yelpy2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LICEcap](https://www.cockos.com/licecap/)
 
